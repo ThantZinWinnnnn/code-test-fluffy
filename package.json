@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "sass": "^1.89.2",
     "tailwindcss": "^4"
   }
 }
