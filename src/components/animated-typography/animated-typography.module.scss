@@ -1,0 +1,68 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding-left: 3rem;
+  color: #1e3a8a;
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 2.5rem;
+  z-index: 20;
+
+  @media (min-width: 768px) {
+    padding-left: 6rem;
+    font-size: 1.5rem;
+  }
+}
+
+.textLine {
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: lineAppear 1s ease-out forwards;
+}
+
+.character {
+  display: inline-block;
+  opacity: 0;
+  animation: floatingText 1s ease-in-out infinite alternate,
+    characterAppear 0.5s ease-out forwards;
+}
+
+:global {
+  @keyframes floatingText {
+    0% {
+      transform: translateY(0) rotate(-5deg);
+    }
+    50% {
+      transform: translateY(-2px) rotate(5deg);
+    }
+    100% {
+      transform: translateY(0) rotate(-2deg);
+    }
+  }
+
+  @keyframes lineAppear {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes characterAppear {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
