@@ -1,0 +1,18 @@
+@keyframes transformAnimation {
+  0% {
+    transform: translateY(15px);
+  }
+  100% {
+    transform: translateY(-15px);
+  }
+}
+
+.transformAnimate {
+  transform: translateY(10px);
+  width: 100%;
+  animation: transformAnimation 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95)
+    infinite alternate;
+  &.stop {
+    animation: none;
+  }
+}

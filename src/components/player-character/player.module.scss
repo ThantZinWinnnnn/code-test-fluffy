@@ -1,0 +1,191 @@
+.playerCharacter {
+  width: 100%;
+  aspect-ratio: 10 / 17;
+  position: relative;
+  transform: translateY(25%);
+  transition: transform 1.5s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+
+  // --- Idle animation styles ---
+  .hair {
+    animation: floatHair 3s ease-in-out infinite alternate;
+  }
+  .head {
+    animation: nod 5s ease-in-out infinite;
+  }
+  .neko {
+    animation: wiggle 4s ease-in-out infinite alternate;
+  }
+  .headphone {
+    animation: floatHair 3.5s ease-in-out infinite alternate;
+  }
+  .leftHand,
+  .rightHand {
+    animation: breathe 4s ease-in-out infinite;
+  }
+  .hand,
+  .handLeft {
+    animation: sway 6s ease-in-out infinite alternate;
+  }
+
+  // --- State-based animations (Walk & Laydown) ---
+  // Grouping common animation rules for walk and laydown states
+  &.walk,
+  &.laydown {
+    .leftFoot,
+    .midFoot {
+      animation: walkLeft 0.5s ease-in-out infinite alternate;
+    }
+    .rightFoot,
+    .rightFootAlt {
+      animation: walkRight 0.5s ease-in-out infinite alternate-reverse;
+    }
+    .leftHand,
+    .handLeft {
+      animation: swingArm 0.5s ease-in-out infinite alternate;
+    }
+    .rightHand,
+    .hand {
+      animation: swingArm 0.5s ease-in-out infinite alternate-reverse;
+    }
+    .body {
+      animation: bounce 0.5s ease-in-out infinite alternate;
+    }
+    .head,
+    .hair,
+    .neck,
+    .headphone,
+    .neko {
+      animation: headBob 0.5s ease-in-out infinite alternate;
+    }
+    .blouseLeft,
+    .blouseRight {
+      animation: flutter 0.5s ease-in-out infinite alternate;
+    }
+  }
+
+  // --- State-specific transformations ---
+  &.laydown {
+    transform: translateY(25%) rotate(-90deg) scale(0.5);
+    @media (max-width: 500px) {
+      transform: translateY(25%) rotate(-90deg) scale(0.35);
+    }
+    @media (max-width: 360px) {
+      transform: translateY(25%) rotate(-90deg) scale(0.3);
+    }
+  }
+
+  &.walk {
+    transform: translateX(-30%) translateY(30%) scale(0.5);
+    @media (max-width: 500px) {
+      transform: translateX(-10%) translateY(45%) scale(0.5);
+    }
+  }
+}
+
+// --- Animation Keyframes (Cleaned up duplicates) ---
+@keyframes floatHair {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-2px) rotate(1deg);
+  }
+}
+
+@keyframes nod {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(1deg);
+  }
+  75% {
+    transform: rotate(-1deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes wiggle {
+  from {
+    transform: rotate(-1deg);
+  }
+  to {
+    transform: rotate(1deg);
+  }
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(1px);
+  }
+}
+
+@keyframes sway {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(2deg);
+  }
+}
+
+// Enhanced walk/action animations
+@keyframes walkLeft {
+  from {
+    transform: translateY(0) rotate(0deg);
+  }
+  to {
+    transform: translateY(-5px) translateX(3px) rotate(10deg);
+  }
+}
+
+@keyframes walkRight {
+  from {
+    transform: translateY(0) rotate(0deg);
+  }
+  to {
+    transform: translateY(-5px) translateX(-3px) rotate(-10deg);
+  }
+}
+
+@keyframes swingArm {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(25deg) translateY(-2px);
+  }
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(0) scale(1);
+  }
+  to {
+    transform: translateY(-3px) scale(1.01);
+  }
+}
+
+@keyframes headBob {
+  from {
+    transform: translateY(0) rotate(0deg);
+  }
+  to {
+    transform: translateY(-2px) rotate(2deg);
+  }
+}
+
+@keyframes flutter {
+  from {
+    transform: translateY(0) rotate(0deg);
+  }
+  to {
+    transform: translateY(-3px) rotate(3deg);
+  }
+}

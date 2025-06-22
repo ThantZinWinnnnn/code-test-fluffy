@@ -1,5 +1,6 @@
+import Illustrations from "@/components/illustrations/illustrations";
 import InitialLoader from "@/components/loading/initial-loader";
-import SectionContainer from "@/components/section-container/SectionContainer";
+import SectionContainer from "@/components/section-container/section-container";
 import Image from "next/image";
 
 export default function Home() {
@@ -16,6 +17,9 @@ export default function Home() {
             />
           </div>
         </section>
+        <section className="w-full h-screen bg-[#fbf6ec]"></section>
+        <section className="w-full h-screen bg-[#fbf6ec]"></section>
+        <Illustrations />
       </SectionContainer>
       <InitialLoader />
     </main>
